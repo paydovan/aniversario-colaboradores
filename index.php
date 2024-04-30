@@ -24,6 +24,9 @@
                 // Converte a data de nascimento para um objeto DateTime
                 $dataNascimento = DateTime::createFromFormat('d/m/Y', $aniverColaborador);
                 
+                $diferenca = $dataNascimento->diff($dataAtual);
+                $idade = $diferenca->y;
+                
                 // Define o ano da data de nascimento como o ano atual
                 $dataNascimento->setDate($dataAtual->format('Y'), $dataNascimento->format('m'), $dataNascimento->format('d'));
                 
@@ -32,11 +35,12 @@
                 
                 // Verifica se o aniversário já passou, é hoje ou ainda está por vir
                 if ($diff->format('%R%a') < 0) {
-                    echo 'O aniversário de ' . $row[0] . ' já passou a ' . abs($diff->format('%a')) . ' dias.<br>';
+                    echo 'O aniversário de ' . $row[0] . ' já passou a ' . abs($diff->format('%a')) . ' dias. E ele(a) completou ' . $idade . ' anos.<br>';
                 } elseif ($diff->format('%R%a') == 0) {
-                    echo 'Hoje é o aniversário de ' . $row[0] . '!<br>';
+                    echo 'Hoje é o aniversário de ' . $row[0] . '! Que está completando ' . $idade . ' anos.<br>';
                 } else {
-                    echo 'O aniversário de ' . $row[0] . ' será em ' . $diff->format('%a') . ' dias.<br>';
+                    $idade = $idade + 1;
+                    echo 'O aniversário de ' . $row[0] . ' será em ' . $diff->format('%a') . ' dias. E ele(a) completará ' . $idade . ' anos.<br>';
                 }
             }
         }
