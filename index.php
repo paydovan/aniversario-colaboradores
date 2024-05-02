@@ -58,8 +58,11 @@
                     $anosEmpresa = $anosEmpresa + 1;
                     echo 'O aniversario de ' . $row[0] . ' será esse ano ainda! Ele(a) estará completando ' . $anosEmpresa . ' anos de empresa.<br>';
                 }
+
+                echo '----------------------------------------------------------------------------<br>';
             }
         }
     ?>
+
 </body>
 </html>
