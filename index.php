@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>Listando aniversário dos colaboradores!</h1>
     <?php 
         $url = "https://sheets.googleapis.com/v4/spreadsheets/1-fWXw-8tuKHiDdaSmNIUnNcRrcah2D8Bw_zaME0HxpM/values/Página1!A1:D20?majorDimension=ROWS&key=AIzaSyCjGmLrBX9K18l6AUUzluoIB67SJWAXnps";
         
@@ -56,10 +58,10 @@
                     echo 'O aniversario de empresa de ' . $row[0] . ' é hoje! Que está completando ' . $anosEmpresa .  ' anos de empresa.<br>';
                 } else {
                     $anosEmpresa = $anosEmpresa + 1;
-                    echo 'O aniversario de ' . $row[0] . ' será esse ano ainda! Ele(a) estará completando ' . $anosEmpresa . ' anos de empresa.<br>';
+                    echo 'O aniversario de empresa de ' . $row[0] . ' será esse ano ainda! Ele(a) estará completando ' . $anosEmpresa . ' anos de empresa.<br>';
                 }
 
-                echo '----------------------------------------------------------------------------<br>';
+                echo '------------------------------------------------------------------------------------------------------------------------------------------------------------------<br>';
             }
         }
     ?>
