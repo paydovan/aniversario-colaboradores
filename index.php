@@ -9,7 +9,15 @@
 <body>
     <h1>Listando aniversário dos colaboradores!</h1>
     <?php 
-        $url = "https://sheets.googleapis.com/v4/spreadsheets/1-fWXw-8tuKHiDdaSmNIUnNcRrcah2D8Bw_zaME0HxpM/values/Página1!A1:D20?majorDimension=ROWS&key=AIzaSyCjGmLrBX9K18l6AUUzluoIB67SJWAXnps";
+
+        require_once __DIR__ . '/vendor/autoload.php'; // Carrega o autoload do Composer
+
+        $dotenv = Dotenv\Dotenv::createImmutable(__DIR__); // Cria uma instância do Dotenv
+        $dotenv->load(); // Carrega as variáveis de ambiente do arquivo .env
+
+        $apiKey = $_ENV['GOOGLE_SHEETS_API_KEY']; // Obtém a chave de API do ambiente
+
+        $url = "https://sheets.googleapis.com/v4/spreadsheets/1-fWXw-8tuKHiDdaSmNIUnNcRrcah2D8Bw_zaME0HxpM/values/Página1!A1:D20?majorDimension=ROWS&key=$apiKey";
         
         $file = file_get_contents($url);
         $colaboradores = json_decode($file);
